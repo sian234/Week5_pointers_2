@@ -10,6 +10,9 @@
 
 float GenerateRandomNumber(); //Prototypes for the functions
 void askAboutMoney(int &cash, int &goal);
+int& CalculatePlayerBonus1(int numGames);
+int& CalculatePlayerBonus2(int numGames);
+
 
 int main(int args, const char * argv[]) {
 
@@ -28,6 +31,8 @@ int main(int args, const char * argv[]) {
 		num_games++;
 
 		askAboutMoney(cash, goal);
+		int bonus = CalculatePlayerBonus1(6) + CalculatePlayerBonus2(6);
+		cash += bonus;
 
 		std::cout << "Game: " << num_games << std::endl;
 
@@ -47,7 +52,7 @@ int main(int args, const char * argv[]) {
 		else if (cash == 0)
 			cash = 10;
 
-		std::cout << "\Do you want to play again? Y/N: ";
+		std::cout << "Do you want to play again? Y/N: ";
 		std::cin >> playAgain;
 
 	} while (playAgain == 'y' || 'Y');
@@ -60,10 +65,39 @@ int main(int args, const char * argv[]) {
 
 }
 
+//int& CalculatePlayerBonus1(int numGames, const int &cash) { //Pass by constant reference
+int& CalculatePlayerBonus1(int numGames) { //Pass by constant reference
+
+	int returnBonus{ 0 };
+
+	if (numGames > 5) {
+	
+		returnBonus = 8;
+		
+	}
+	return returnBonus;
+
+}
+
+
+//Pass by reference with pointers
+int& CalculatePlayerBonus2(int numGames) {
+	//int& CalculatePlayerBonus2(int* numGames) {
+
+	int returnBonus{0};
+
+	if (numGames > 5) {
+
+		returnBonus = 2;
+
+	}
+	return returnBonus;
+
+}
 
 void askAboutMoney(int &cash, int &goal) { //now passing in the addresses of the variables that were declared in the main directly instead with the & symbol
 
-
+	// this is an easier way of passing by reference
 	std::cout << "Please enter the players intial cash: ";
 	std::cin >> cash;
 
@@ -72,8 +106,13 @@ void askAboutMoney(int &cash, int &goal) { //now passing in the addresses of the
 
 }
 
-float GenerateRandomNumber();
+float GenerateRandomNumber(){
 
-
+	return 5.0f;
 
 }
+
+
+
+
+
