@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Book.cpp" />
     <ClCompile Include="Gambler.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>

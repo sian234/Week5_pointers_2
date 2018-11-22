@@ -14,70 +14,70 @@ int& CalculatePlayerBonus1(int numGames);
 int& CalculatePlayerBonus2(int numGames);
 
 
-int main(int args, const char * argv[]) {
-
-	//int stake{0};
-	int goal{ 0 };
-	int num_games{ 0 };
-	int cash{ 0 };
-
-	int bets{ 0 };
-	int wins{ 0 };
-
-	char playAgain{ 'y' };
-
-	do {
-
-		num_games++;
-
-		askAboutMoney(cash, goal);
-		int bonus = CalculatePlayerBonus1(6) + CalculatePlayerBonus2(6);
-		cash += bonus;
-
-		std::cout << "Game: " << num_games << std::endl;
-
-		while (cash > 0 && cash < goal) {
-
-			bets++;
-			if (GenerateRandomNumber() < 0.5)
-				cash++;
-			else
-				cash--;
-			std::cout << "cash: " << cash << std::endl;
-
-		}
-
-		if (cash == goal)
-			wins++;
-		else if (cash == 0)
-			cash = 10;
-
-		std::cout << "Do you want to play again? Y/N: ";
-		std::cin >> playAgain;
-
-	} while (playAgain == 'y' || 'Y');
-
-	std::cout << "\n" << "The total number of bets: " << bets / num_games;
-	std::cout << "\nwins: " << wins;
-	std::cout << "\n" << (100 * wins / num_games) << " % wins" << std::endl;
-
-	return 0;
-
-}
-
-//int& CalculatePlayerBonus1(int numGames, const int &cash) { //Pass by constant reference
-int& CalculatePlayerBonus1(int numGames) { //Pass by constant reference
-
-	int returnBonus{ 0 };
-
-	if (numGames > 5) {
-	
-		returnBonus = 8;
-		
-	}
-	return returnBonus;
-
-}
+//int main(int args, const char * argv[]) {
+//
+//	//int stake{0};
+//	int goal{ 0 };
+//	int num_games{ 0 };
+//	int cash{ 0 };
+//
+//	int bets{ 0 };
+//	int wins{ 0 };
+//
+//	char playAgain{ 'y' };
+//
+//	do {
+//
+//		num_games++;
+//
+//		askAboutMoney(cash, goal);
+//		int bonus = CalculatePlayerBonus1(6) + CalculatePlayerBonus2(6);
+//		cash += bonus;
+//
+//		std::cout << "Game: " << num_games << std::endl;
+//
+//		while (cash > 0 && cash < goal) {
+//
+//			bets++;
+//			if (GenerateRandomNumber() < 0.5)
+//				cash++;
+//			else
+//				cash--;
+//			std::cout << "cash: " << cash << std::endl;
+//
+//		}
+//
+//		if (cash == goal)
+//			wins++;
+//		else if (cash == 0)
+//			cash = 10;
+//
+//		std::cout << "Do you want to play again? Y/N: ";
+//		std::cin >> playAgain;
+//
+//	} while (playAgain == 'y' || 'Y');
+//
+//	std::cout << "\n" << "The total number of bets: " << bets / num_games;
+//	std::cout << "\nwins: " << wins;
+//	std::cout << "\n" << (100 * wins / num_games) << " % wins" << std::endl;
+//
+//	return 0;
+//
+//}
+//
+////int& CalculatePlayerBonus1(int numGames, const int &cash) { //Pass by constant reference
+//int& CalculatePlayerBonus1(int numGames) { //Pass by constant reference
+//
+//	int returnBonus{ 0 };
+//
+//	if (numGames > 5) {
+//	
+//		returnBonus = 8;
+//		
+//	}
+//	return returnBonus;
+//
+//}
 
 
 //Pass by reference with pointers
